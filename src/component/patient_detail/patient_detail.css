@@ -170,3 +170,12 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
 .___add_medicine_:active{
     background-color: blue;
 }
+._patient{
+    margin: auto;
+    margin-top: 1rem;
+}
+
+._patient_name{
+    font-size: 30px;
+    font-weight: bold;
+}

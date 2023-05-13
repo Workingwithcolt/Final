@@ -1,10 +1,14 @@
-.container_first{
+.____container{
+    background-color: #302f7f;
+} 
+.____container_first{
     display:grid;
     grid-template-columns: 0.3fr 1fr;
     padding-top:3rem;
     padding-left: 3rem;
+    
 }
-.Name_container{
+.____Name_container{
     color:aliceblue;
     height:50px;
     background-color: red;
@@ -14,7 +18,7 @@
     padding-left: 10px;
     border-radius: 10px;
 }
-.Address_container{
+.____Address_container{
     color:aliceblue;
     height:50px;
     background-color: red;
@@ -24,7 +28,7 @@
     padding-left: 10px;
     border-radius: 10px;
 }
-.container_second{
+.____container_second{
     display: flex;
     flex-direction: column;
     overflow-y:scroll;
@@ -34,18 +38,18 @@
     height: 30rem;
     border-radius: 1.5rem;
 }
-.container_second::-webkit-scrollbar{
-    width:100px;
+.____container_second::-webkit-scrollbar{
+    width:10px;
 }
-.container_second::-webkit-scrollbar-track{
+.____container_second::-webkit-scrollbar-track{
     background-color: #2421a5;
     border-radius: 100px;
 }
-.container_second::-webkit-scrollbar-thumb{
+.____container_second::-webkit-scrollbar-thumb{
      background-color: #06040e;
      border-radius: 100px;
 }
-.medicine{
+.____medicine{
     display: flex;
     flex-direction: column;
     background-color: rgb(196, 228, 13);
@@ -58,22 +62,22 @@
     border-radius: 1rem;   
     cursor: pointer;
 }
-.medicine_name{
+.____medicine_name{
     display:grid;
     grid-template-columns: 1fr 0.4fr;
     color:rgb(19, 131, 103);
     font-weight: bold;
     font-size: 30px;
 }
-.medicine_quantity{
+.____medicine_quantity{
     color:rgb(68, 46, 65);
     font-weight: bold;
     font-size: 15px;
 }
-.date{
+.____date{
     color:rgb(236, 252, 22);
 }
-.add_medicine{
+.____add_medicine{
     margin-left:25%;
     margin-right: auto;
     width:100px; 
@@ -88,10 +92,10 @@
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
-.add_medicine:active{
+.____add_medicine:active{
     background-color: blue;
 }
-.quantity{
+.____quantity{
     outline: none;
     border: transparent;
     border-radius: 6px;

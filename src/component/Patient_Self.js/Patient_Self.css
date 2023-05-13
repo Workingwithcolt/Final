@@ -68,6 +68,8 @@
     transform-style: preserve-3d;
     perspective: 1px;
     border-radius: 1.5rem;
+    height: 500px;
+    margin-top: 40px;
 }
 .__container_second::-webkit-scrollbar{
     width:6px;

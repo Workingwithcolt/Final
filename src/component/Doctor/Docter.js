@@ -1,48 +1,51 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './docter.css'
+import { useState } from 'react';
+// export const otp_number = uuidv4();
+import { Alert } from 'react-bootstrap';
+import {Patient_detail} from "../patient_detail/Patient_detail"
+import { LoginInfoContext } from '../LoginContext/DataContext';
+import { useContext } from 'react';
+
 export const Docter = () => {
-  return (
-    <div className='container'>
-        <div className='_container_first'>
-            {/* name */}
-            <div className='_Name_container'>
-                Dr.Rokde
-            </div>
-            {/* addres */}
-            <div className='_Address_container'>
-            0xe66d125041f0eabc15E0dEe318aBF49f8c864451
-            </div>
-        </div>
-        <div className="_container_second">
-            {/* medicines */}
-            <div className='_patient'>
-                <div className='_patient_name'>
-                    Chetan
+    const data = useContext(LoginInfoContext)
+    if(!data){
+        return (
+            <div
+            style={{margin:"auto",
+            marginTop:"5rem"    
+    }}
+            >
+                <Alert
+                style={{
+                    padding:"5rem",
+                    color:"red",
+                    fontSize:"2rem"
+                }}
+            variant='danger'>
+                No Any Patient is Present
+            </Alert>
+            </div>            
+        )
+    }
+    return (
+        <div className='_container'>
+            <div className='_container_first'>
+                {/* name */}
+                <div className='_Name_container'>
+                    Dr.Rokde
                 </div>
+                {/* addres */}
                 <div className='_Address_container'>
-            0xe66d125041f0eabc15E0dEe318aBF49f8c864451
+                    0xe66d125041f0eabc15E0dEe318aBF49f8c864451
+                </div>
             </div>
+            <div className="_container_second">
+                {/* medicines */}
+                   < Patient_detail name = {"Chean"} address = {"0xe66d125041f0eabc15E0dEe318aBF49f8c864451"}/>
             </div>
 
-            <div className='_patient'>
-                <div className='_patient_name'>
-                    Manisha
-                </div>
-                <div className='_Address_container'>
-            0xe66d125041f0eabc15E0dEe318aBF49f8c864451
-            </div>
-            </div>
-
-            <div className='_patient'>
-                <div className='_patient_name'>
-                    Athrav
-                </div>
-                <div className='_Address_container'>
-            0xe66d125041f0eabc15E0dEe318aBF49f8c864451
-            </div>
-            </div>
-            
         </div>
-        </div>
-  )
+    )
 }
