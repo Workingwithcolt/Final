@@ -3,25 +3,34 @@ import './App.css';
 import "./css/bootstrap.min.css"
 import "./css/style.css";
 import "./css/carousel.css";
-import { Route, Routes, Switch, Link } from 'react-router-dom';
+import { Route, Routes, Switch, Link, redirect, Navigate, useNavigate } from 'react-router-dom';
 import { Login } from "./component/Login/Login";
 import { Register } from "./Register";
 import LoginBar from './component/loginbar/LoginBar';
 import { Docter } from "./component/Doctor/Docter"
 // import Patient from "./component/Patients/Patient"
-import { Detail_Docter } from "./component/Detail_Docter/Detail_Docter"
+import { Patient_Detail_Docter_Side } from "./component/Detail_Docter/Patient_Detail_Docter_Side"
 import { Patient_Self } from './component/Patient_Self.js/Patient_Self';
-import Carousel from "react-elastic-carousel";
-import Item from "./Item";
 import { useContext } from 'react';
 import { useState } from 'react';
 import { Patient } from './component/Patients/Patient';
 import { LoginContext, LoginInfoContext } from './component/LoginContext/DataContext';
-
+import { logout } from './component/ContractMethod';
+import { useEffect } from 'react';
+import Logout from './component/Logout/logout';
 
 
 function App(props) {
-  const data = useContext(LoginInfoContext)
+  const navigate = useNavigate()
+  const id = 23
+  const { data, Access, SetAccess, CurrentAccount, SetCurrentAccount } = useContext(LoginInfoContext)
+
+  const handleChange = () => {
+    logout()
+    SetCurrentAccount("Account")
+    SetAccess(false)
+    navigate("/")
+  } 
   const i = require('./img/medicine.png')
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -29,7 +38,7 @@ function App(props) {
     { width: 768, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className='start'>
@@ -47,11 +56,8 @@ function App(props) {
                 <a href="index.html" className="nav-item nav-link active"><Link to="/">Home</Link></a>
                 <a href="about.html" className="nav-item nav-link">About</a>
                 <a href="service.html" className="nav-item nav-link">Service</a>
-                <a href="price.html" className="nav-item nav-link">Pricing</a>
-                {/* <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                </div> */}
-                <a href="contact.html" className="nav-item nav-link">Contact</a>
+                <a href="price.html" className="nav-item nav-link">Contact</a>
+                <Logout handleChange={handleChange} Access={Access}/>
               </div>
             </div>
           </nav>
@@ -61,24 +67,33 @@ function App(props) {
       <Routes>
         <Route path="/"
           element={
-            <LoginBar />
+            <LoginContext>
+              <LoginBar />
+            </LoginContext>
           } />
 
         <Route
           path="/registers/docter"
           element={
-            <Login name={"Docter"} />
+            <LoginContext>
+              <Login name={"Docter"} />
+            </LoginContext>
           } />
 
         <Route
           path="/registers/patient"
           element={
-            <Login name={"Patient"} />
+            <LoginContext>
+              <Login name={"Patient"} />
+            </LoginContext>
           } />
 
         <Route
           path="/registers/pharmasist"
-          element={<Login name={"Pharmasist"} />
+          element={
+            <LoginContext>
+              <Login name={"Pharmasist"} />
+            </LoginContext>
           } />
 
         <Route
@@ -86,20 +101,22 @@ function App(props) {
           element={
             <LoginContext>
               <Docter />
-              </LoginContext>
+            </LoginContext>
           } />
 
         <Route
           path="/login/Patient"
-          element={<Patient_Self />
+          element={
+            <LoginContext>
+              <Patient_Self />
+            </LoginContext>
           } />
-
         <Route
           path="/login/Pharmasist"
           element={<Patient />
           } />
 
-        <Route path="/login/Docter/patient" element={<Detail_Docter />} />
+        <Route path={`/login/Docter/patient/:id`} element={<Patient_Detail_Docter_Side />} />
 
       </Routes>
 

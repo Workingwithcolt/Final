@@ -8,16 +8,23 @@ import { LoginInfoContext } from '../LoginContext/DataContext';
 import Search from '../Search/Search';
 import MedicalMedicine from '../MedicalMedicine/MedicalMedicine';
 import { useState } from 'react';
-export const Detail_Docter = () => {
+import { useParams } from 'react-router-dom';
+export const Patient_Detail_Docter_Side = (props) => {
+
     const [searchvalue,setSearchValue] = useState("")
     const { data } = useContext(LoginInfoContext)
     const i = require('../../img/logo.png')
-    console.log(data.Medical_Medicine)
+    const {id} = useParams()
+    const public_key = typeof(parseInt(id.substr(1,id.length)))
+    
     const filterItems = (arr, query) => {
         return arr.filter(element => 
         element.Name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
     }
-    console.log(searchvalue)
+
+    // getPatient
+
+    // console.log(searchvalue)
     return (
         <div className='___container_docter_detail'>
 

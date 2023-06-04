@@ -1,11 +1,22 @@
-import React,{useState} from 'react';
+import React,{useContext} from 'react';
+import { LoginContext } from '../LoginContext/DataContext';
 import '../../img/blog-1.jpg'
-import {Link} from 'react-router-dom';
+import {Link, redirect, useNavigate} from 'react-router-dom';
 import './LoginBar.css'
 import Carousel from "react-elastic-carousel";
 import Item from "../../Item";
+import { LoginInfoContext } from '../LoginContext/DataContext';
 function LoginBar() {
-    
+    const {Access,CurrentAccount} = useContext(LoginInfoContext)
+    const navigate = useNavigate();
+    console.log(Access)
+    const handleChange = ()=>{
+        if(Access && CurrentAccount !== "Account"){
+            navigate("/login/Docter")
+        }else{
+            navigate('/registers/docter')
+        }
+    }
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
         { width: 550, itemsToShow: 2 },
@@ -43,9 +54,7 @@ function LoginBar() {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ullam aliquid non eligendi, nemo est neque reiciendis error?
                     </div> */}
                     <div className='submit'>
-                        <Link to = '/Registers/docter' className='option'>
-                        <button className='btn rounded-pill'>LOGIN</button>
-                        </Link>
+                        <button className='btn rounded-pill' onClick={handleChange}>LOGIN</button>
                     </div>
                 </div>
                 <div className='cardcontainer'>
@@ -59,7 +68,7 @@ function LoginBar() {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ullam aliquid non eligendi, nemo est neque reiciendis error? 
                     </div> */}
                     <div className='submit'>        
-                        <Link to = '/Registers/patient' className='option'>
+                        <Link to = '/registers/patient' className='option'>
                         <button className='btn rounded-pill'>LOGIN</button></Link>
                     </div>
                 </div>
@@ -74,7 +83,7 @@ function LoginBar() {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ullam aliquid non eligendi, nemo est neque reiciendis error?
                     </div> */}
                     <div className='submit'>
-                        <Link to = '/Registers/pharmasist' className='option'>
+                        <Link to = '/registers/pharmasist' className='option'>
                         <button className='btn rounded-pill'>LOGIN</button></Link>
                     </div>
                 </div>

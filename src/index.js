@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { LoginInfoContext } from './component/LoginContext/DataContext';
 import { LoginContext } from './component/LoginContext/DataContext';
+import { Login } from './component/Login/Login';
+import { useContext } from 'react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <LoginContext>
-        <App />
+        <App LoginInfoContext = {LoginInfoContext}/>
       </LoginContext>
     </Router>
   </React.StrictMode>
